@@ -102,6 +102,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   subtitle: Text(user.myps ?? ''),
                 ),
                 const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.history),
+                  title: const Text('我的活动日志'),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                  onTap: () => Navigator.pushNamed(context, '/logs'),
+                ),
                 const Divider(height: 1),
                 const ListTile(title: Text('测验历史')),
                 if (history.isEmpty)

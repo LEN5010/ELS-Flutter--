@@ -10,6 +10,8 @@ import 'pages/quiz/quiz_detail_page.dart';
 import 'pages/community/post_detail_page.dart';
 import 'pages/community/post_create_page.dart';
 import 'pages/profile/edit_profile_page.dart';
+import 'pages/logs/log_list_page.dart';
+import 'pages/logs/log_statistics_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +52,10 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => const PostCreatePage());
             case '/edit_profile':
               return MaterialPageRoute(builder: (_) => const EditProfilePage());
+            case '/logs':
+              return MaterialPageRoute(builder: (_) => const LogListPage());
+            case '/log_statistics':
+              return MaterialPageRoute(builder: (_) => const LogStatisticsPage());
             default:
               return MaterialPageRoute(
                 builder: (_) => const Scaffold(body: Center(child: Text('404'))),

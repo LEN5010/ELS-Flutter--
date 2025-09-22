@@ -134,8 +134,9 @@ class _PostListPageState extends State<PostListPage> {
                   return Center(child: Text('加载失败：${snap.error}'));
                 }
                 final paged = snap.data!;
-                if (paged.data.isEmpty)
+                if (paged.data.isEmpty) {
                   return const Center(child: Text('暂无帖子'));
+                }
 
                 return ListView.separated(
                   itemCount: paged.data.length,

@@ -100,3 +100,27 @@ class SessionManager extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class Session {
+  static Future<Map<String, dynamic>?> getCurrentUser() async {
+    final sessionData = await SecureStorage.readSession();
+    if (sessionData['token'] == null) return null;
+
+    return {
+      'user_id': int.tryParse(sessionData['user_id'] ?? ''),
+      'email': sessionData['email'],
+      'nickname': sessionData['nickname'],
+      'role': sessionData['role'],
+    };
+  }
+
+  static Future<bool> isAdmin() async {
+    final user = await getCurrentUser();
+    return user?['role'] == 'admin';
+  }
+
+  static Future<int?> getUserId() async {
+    final user = await getCurrentUser();
+    return user?['user_id'];
+  }
+}

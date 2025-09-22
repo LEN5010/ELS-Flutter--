@@ -4,6 +4,7 @@ import 'admin_users_page.dart';
 import 'admin_pending_posts_page.dart';
 import 'admin_resources_page.dart';
 import 'admin_quiz_page.dart';
+import '../logs/log_list_page.dart';
 
 class AdminPanelPage extends StatelessWidget {
   const AdminPanelPage({super.key});
@@ -11,7 +12,7 @@ class AdminPanelPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('管理后台'),
@@ -23,6 +24,7 @@ class AdminPanelPage extends StatelessWidget {
               Tab(text: '待审核'),
               Tab(text: '资源'),
               Tab(text: '测验'),
+              Tab(text: '日志'),
             ],
           ),
         ),
@@ -33,6 +35,7 @@ class AdminPanelPage extends StatelessWidget {
             AdminPendingPostsPage(),
             AdminResourcesPage(),
             AdminQuizPage(),
+            LogListPage(),
           ],
         ),
       ),
