@@ -34,9 +34,9 @@ class _PostListPageState extends State<PostListPage> {
   }
 
   void _reload() {
-  setState(() {
-  _future = _fetch();
-  });
+    setState(() {
+      _future = _fetch();
+    });
   }
 
   @override
@@ -58,7 +58,7 @@ class _PostListPageState extends State<PostListPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(3.3),
             child: Row(
               children: [
                 const Text('类别：'),
@@ -66,7 +66,8 @@ class _PostListPageState extends State<PostListPage> {
                   value: _category,
                   items: const [
                     DropdownMenuItem(value: 'general', child: Text('general')),
-                    DropdownMenuItem(value: 'question', child: Text('question')),
+                    DropdownMenuItem(
+                        value: 'question', child: Text('question')),
                   ],
                   onChanged: (v) {
                     if (v == null) return;
@@ -77,14 +78,15 @@ class _PostListPageState extends State<PostListPage> {
                     });
                   },
                 ),
-                const SizedBox(width: 12),
                 const Text('状态：'),
                 DropdownButton<String>(
                   value: _status,
                   items: const [
-                    DropdownMenuItem(value: 'approved', child: Text('approved')),
+                    DropdownMenuItem(
+                        value: 'approved', child: Text('approved')),
                     DropdownMenuItem(value: 'pending', child: Text('pending')),
-                    DropdownMenuItem(value: 'rejected', child: Text('rejected')),
+                    DropdownMenuItem(
+                        value: 'rejected', child: Text('rejected')),
                   ],
                   onChanged: (v) {
                     if (v == null) return;
@@ -95,7 +97,6 @@ class _PostListPageState extends State<PostListPage> {
                     });
                   },
                 ),
-                const Spacer(),
                 IconButton(
                   onPressed: _page > 1
                       ? () {
@@ -115,7 +116,9 @@ class _PostListPageState extends State<PostListPage> {
                       _future = _fetch();
                     });
                   },
-                  icon: const Icon(Icons.chevron_right),
+                  icon: const Icon(
+                    Icons.chevron_right,
+                  ),
                 ),
               ],
             ),
@@ -131,7 +134,8 @@ class _PostListPageState extends State<PostListPage> {
                   return Center(child: Text('加载失败：${snap.error}'));
                 }
                 final paged = snap.data!;
-                if (paged.data.isEmpty) return const Center(child: Text('暂无帖子'));
+                if (paged.data.isEmpty)
+                  return const Center(child: Text('暂无帖子'));
 
                 return ListView.separated(
                   itemCount: paged.data.length,
@@ -140,7 +144,8 @@ class _PostListPageState extends State<PostListPage> {
                     final p = paged.data[i];
                     return ListTile(
                       title: Text(p.title),
-                      subtitle: Text('by ${p.nickname} • ${p.category} • ${p.status}\n${p.createdAt}'),
+                      subtitle: Text(
+                          'by ${p.nickname} • ${p.category} • ${p.status}\n${p.createdAt}'),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -149,7 +154,8 @@ class _PostListPageState extends State<PostListPage> {
                           Text('${p.commentCount ?? 0}')
                         ],
                       ),
-                      onTap: () => Navigator.pushNamed(context, '/post_detail', arguments: p.postId),
+                      onTap: () => Navigator.pushNamed(context, '/post_detail',
+                          arguments: p.postId),
                     );
                   },
                 );

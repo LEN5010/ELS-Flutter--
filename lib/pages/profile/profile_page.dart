@@ -102,30 +102,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   subtitle: Text(user.myps ?? ''),
                 ),
                 const Divider(height: 1),
-                const ListTile(title: Text('学习进度')),
-                if (progress == null)
-                  const ListTile(title: Text('暂无进度'))
-                else
-                  Column(
-                    children: [
-                      ListTile(
-                        title: const Text('词汇学习'),
-                        trailing: Text('${progress.vocabLearned}'),
-                      ),
-                      ListTile(
-                        title: const Text('语法学习'),
-                        trailing: Text('${progress.grammarLearned}'),
-                      ),
-                      ListTile(
-                        title: const Text('听力练习'),
-                        trailing: Text('${progress.listeningDone}'),
-                      ),
-                      ListTile(
-                        title: const Text('最近更新'),
-                        subtitle: Text(progress.lastUpdate),
-                      ),
-                    ],
-                  ),
                 const Divider(height: 1),
                 const ListTile(title: Text('测验历史')),
                 if (history.isEmpty)
